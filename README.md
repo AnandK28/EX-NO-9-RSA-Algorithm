@@ -1,4 +1,4 @@
-# EX-NO-9-RSA-Algorithm
+<img width="940" height="119" alt="image" src="https://github.com/user-attachments/assets/d6d46213-7082-421c-8909-3cae64b8b470" /># EX-NO-9-RSA-Algorithm
 
 ## AIM:
 To Implement RSA Encryption Algorithm in Cryptography
@@ -36,13 +36,40 @@ Step 5: **Security Foundation
 The security of RSA relies on the difficulty of factoring large numbers; thus, choosing sufficiently large prime numbers for \( p \) and \( q \) is crucial for security.
 
 ## Program:
+```
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+import base64
 
+# Generate RSA keys (2048-bit)
+key = RSA.generate(2048)
+public_key = key.publickey()
+private_key = key
+
+# Take input
+plaintext = input("Enter the plaintext: ")
+
+# Encrypt
+cipher = PKCS1_OAEP.new(public_key)
+encrypted = cipher.encrypt(plaintext.encode())
+encrypted_b64 = base64.b64encode(encrypted).decode()
+print("\nEncrypted (Base64):", encrypted_b64)
+
+# Decrypt
+cipher = PKCS1_OAEP.new(private_key)
+decrypted = cipher.decrypt(base64.b64decode(encrypted_b64)).decode()
+print("Decrypted:", decrypted)
+
+```
 
 
 
 ## Output:
+<img width="940" height="119" alt="image" src="https://github.com/user-attachments/assets/1fa98713-bc3b-46dc-ae85-f5d0e23d95eb" />
 
 
 
 ## Result:
+
+Thus, RSA Algorithm has been implemented successfully.
  The program is executed successfully.
